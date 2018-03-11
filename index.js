@@ -29,9 +29,9 @@ app.get('/', function (req, res) {
   res.render('login.html');
 });
 
-app.get('/home', function (req, res) {
-  res.render("index.html");
-})
+// app.get('/home', function (req, res) {
+//   res.render("index.html");
+// });
 
 app.use('/api', api)
 
