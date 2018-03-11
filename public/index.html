@@ -1,17 +1,38 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
   <head>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="resource/mdb/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resource/mdb/css/mdb.min.css" />
     <link rel="stylesheet" href="index.css" />
+
+    <script type="text/javascript" src="resource/mdb/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resource/mdb/js/mdb.min.js"></script>
+    <script type="text/javascript" src="resource/mdb/js/popper.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <title>Socket.IO chat</title>
   </head>
-  <body>
-    Hello World!
+  <body ng-controller="myController" dir="rtl">
+    <br/>
+    <center>
+
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+    </center>
+
     <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+
+    <div ng-repeat="currSong in songsList" class="row songsList">
+      <my-song-card song-info = "currSong" ng-class=""></my-song-card>
+    </div>
+    <!--/.Card-->
+
+
+
     <script>
       $(function () {
         var socket = io();

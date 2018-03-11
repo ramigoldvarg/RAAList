@@ -1,3 +1,10 @@
-body {
-    color: red;
+.songsList {
+    margin: auto!important; 
+    margin-bottom: 25px!important;
+    width: 50%!important;
+}
+
+.activeSong {
+    background-color: #00c853;
+    color: white;
 }
