@@ -1,4 +1,4 @@
-<div class="col card card-dark" ng-class="{activeSong: index == 0}">
+<div class="col card card-dark" ng-class="{activeSong: index == 0}" ng-controller="MySongController">
     <div class="row">
         <p>{{songInfo.songName}}</p>
         <div ng-click="songLiked(index)" class="like">

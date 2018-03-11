@@ -17,6 +17,26 @@ myApp.controller('myController', function($scope) {
   ]
 });
 
+myApp.factory('socket', ['$rootScope', function($rootScope) {
+  var socket = io.connect();
+
+  return {
+    on: function(eventName, callback){
+      socket.on(eventName, callback);
+    },
+    emit: function(eventName, data) {
+      socket.emit(eventName, data);
+    }
+  };
+}]);
+
+myApp.controller('MySongController', function($scope, socket) {
+    $scope.songLiked = function(index) {
+        console.log(index)
+        socket.emit('like', index);
+    }
+});
+
 myApp.directive('mySongCard', function() {
     return {
         restrict: 'E',
@@ -24,11 +44,9 @@ myApp.directive('mySongCard', function() {
             songInfo: '=',
             index: '='
         },
-        link: function ($scope, element, attrs) {
-            $scope.songLiked = function(songIndex) {
-                alert(songIndex)
-            }
-        },
+        // link: function ($scope, element, attrs) {
+            
+        // },
         templateUrl: 'song-card.html'
     };
 });
