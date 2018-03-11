@@ -24,6 +24,11 @@ myApp.directive('mySongCard', function() {
             songInfo: '=',
             index: '='
         },
+         link: function ($scope, element, attrs) {
+            $scope.songLiked = function(songIndex) {
+
+            }
+        },
         templateUrl: 'song-card.html'
     };
 });
