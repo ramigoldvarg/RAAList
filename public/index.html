@@ -15,20 +15,12 @@
     <script type="text/javascript" src="app.js"></script>
     <title>Socket.IO chat</title>
   </head>
-  <body ng-controller="myController" dir="rtl">
+  <body ng-controller="myController">
     <br/>
-    <center>
-
-      <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-      </form>
-    </center>
-
-    <ul id="messages"></ul>
-
     <div ng-repeat="currSong in songsList" class="row songsList">
-      <my-song-card song-info = "currSong" ng-class=""></my-song-card>
+      <my-song-card song-info = "currSong" index="$index"></my-song-card>
     </div>
+
     <!--/.Card-->
 
     
@@ -57,8 +49,7 @@
       </div>
   </div>
 </div>
-                              
-
+                      
     <script>
       $(function () {
         var socket = io();

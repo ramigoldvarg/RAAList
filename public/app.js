@@ -22,6 +22,7 @@ myApp.directive('mySongCard', function() {
         restrict: 'E',
         scope: {
             songInfo: '=',
+            index: '='
         },
         templateUrl: 'song-card.html'
     };
