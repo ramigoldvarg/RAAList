@@ -16,6 +16,9 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('new message', msg);
   });
+  socket.on('like', function(index) {
+    console.log('like ' + index)
+  })
 });
 
 http.listen(port, function(){

@@ -1,14 +1,8 @@
 <div class="col card card-dark" ng-class="{activeSong: index == 0}">
-    <!--Card image-->
-    <center><p>{{songInfo.songName}}</p></center>
-    <!--Card content-->
-    <div class="card-body">
-        <!--Title-->
-        <h4 class="card-title">Card title</h4>
-        <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <div class="like">
-            <i ng-click="likeSong(index)" class="fas fa-thumbs-up"></i>
+    <div class="row">
+        <p>{{songInfo.songName}}</p>
+        <div ng-click="songLiked(index)" class="like">
+            <i class="fas fa-thumbs-up"></i>
         </div>
     </div>
 </div>
