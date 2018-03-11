@@ -26,7 +26,9 @@ myApp.directive('mySongCard', function() {
         },
         link: function ($scope, element, attrs) {
             $scope.songLiked = function(songIndex) {
-                alert(songIndex)
+                if(songIndex!=0){
+                    alert(songIndex);
+                }
             }
         },
         templateUrl: 'song-card.html'

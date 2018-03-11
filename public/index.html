@@ -16,12 +16,11 @@
     <title>RAAList</title>
   </head>
   <body ng-controller="myController">
-    <br/>
-    <center>
-      <div ng-repeat="currSong in songsList" class="row songsList">
+    <div class="centered">
+      <ul class="list-group" ng-repeat="currSong in songsList">
         <my-song-card song-info = "currSong" index="$index"></my-song-card>
-      </div>
-    </center>
+      </ul>
+    </div>
     <!--/.Card-->
 
     
@@ -37,13 +36,28 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Add a song</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
           <div class="modal-body">
-              ...
+            
+<!-- Search form -->
+<form class="form-inline md-form mr-auto">
+  <input class="form-control mr-sm-2" style="width:75%!important" type="text" placeholder="Search" aria-label="Search">
+  <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
+</form>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+                
+                                    
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

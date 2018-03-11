@@ -1,19 +1,24 @@
 .songsList {
-    margin: auto!important; 
     margin-bottom: 25px!important;
+}
+
+.centered{
+    margin: auto!important;
+    padding-top: 3%;
+    width: 70%!important;
 }
 
 body{
     background: linear-gradient(to right, rgb(36, 198, 220), rgb(81, 74, 157));
+    overflow-y: hidden;
 }
 .activeSong {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
-    color: green;
+    color: #64DD17;
 }
 
 .fab-action-button {
     position: absolute;
-    bottom: 0;
+    bottom: 3%;
     left:90%;
     display: block;
     width: 56px;
@@ -34,5 +39,5 @@ body{
 .like {
     float: right;
     cursor: pointer;
-    padding-left: 300px;
+    /* padding-left: 300px; */
 }
