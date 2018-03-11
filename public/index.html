@@ -17,10 +17,11 @@
   </head>
   <body ng-controller="myController">
     <br/>
-    <div ng-repeat="currSong in songsList" class="row songsList">
-      <my-song-card song-info = "currSong" index="$index"></my-song-card>
-    </div>
-
+    <center>
+      <div ng-repeat="currSong in songsList" class="row songsList">
+        <my-song-card song-info = "currSong" index="$index"></my-song-card>
+      </div>
+    </center>
     <!--/.Card-->
 
     
@@ -51,20 +52,5 @@
       </div>
   </div>
 </div>
-                      
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('new message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      });
-    </script>
   </body>
 </html>
