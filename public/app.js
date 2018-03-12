@@ -32,7 +32,6 @@ myApp.factory('socket', ['$rootScope', function($rootScope) {
 
 myApp.controller('MySongController', function($scope, socket) {
     $scope.songLiked = function(index) {
-        console.log(index)
         socket.emit('like', index);
     }
 });
@@ -44,18 +43,6 @@ myApp.directive('mySongCard', function() {
             songInfo: '=',
             index: '='
         },
-        link: function ($scope, element, attrs) {
-            $scope.songLiked = function(songIndex) {
-                if(songIndex!=0){
-                    alert(songIndex);
-                }
-            }
-        },
-
-        // link: function ($scope, element, attrs) {
-            
-        // },
-
         templateUrl: 'song-card.html'
     };
 });
