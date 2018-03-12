@@ -1,4 +1,4 @@
-<div ng-controller="MySongController">
+<div ng-controller="myController">
     <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="{activeSong: index == 0}">
         <div style="width:85%">{{songInfo.Name}}</div>
         <span style="font-size:18px; float:left;" class="badge badge-primary badge-pill">likes: {{songInfo.Rating}}</span>
@@ -10,13 +10,3 @@
         </div>
     </li>
 </div>
-
-<script>
-  $(function () {
-    var socket = io();
-    $('.like').click(function(){
-      socket.emit('like', "hi");
-      return false;
-    });
-  });
-</script>

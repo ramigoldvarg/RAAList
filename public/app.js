@@ -1,6 +1,13 @@
 var myApp = angular.module('myApp', [])
 
 myApp.controller('myController', function($scope,$http,$q) {
+
+    var socket = io();
+
+    $scope.songLiked = function(index) {
+        socket.emit('like', index);
+    }
+
     $scope.isSignedIn = true;
 
     initApp = function() {
@@ -75,10 +82,8 @@ myApp.factory('socket', ['$rootScope', function($rootScope) {
   };
 }]);
 
-myApp.controller('MySongController', function($scope, socket) {
-    $scope.songLiked = function(index) {
-        socket.emit('like', index);
-    }
+myApp.controller('MySongController', function($scope) {
+    
 });
 
 myApp.directive('mySongCard', function() {
