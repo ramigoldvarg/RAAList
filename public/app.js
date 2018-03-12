@@ -1,8 +1,15 @@
 var myApp = angular.module('myApp', [])
 
-myApp.controller('myController', function($scope) {
+myApp.controller('myController', function($scope,$http,$q) {
+
+    var socket = io();
+
+    $scope.songLiked = function(index) {
+        socket.emit('like', index);
+    }
+
     $scope.isSignedIn = true;
-    
+
     initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
@@ -55,20 +62,11 @@ myApp.controller('myController', function($scope) {
 
     initApp();
 
-    $scope.songsList = [
-        {
-            "songName": "Lil John the king",
-            "likesNumber": 100
-        },
-        {
-            "songName": "Tyrone the king",
-            "likesNumber": 90
-        },
-        {
-            "songName": "Antonyo The King",
-            "likesNumber": 80
-        },
-    ]
+     $http.get("/api/songs").success(function(data){
+        $scope.songsList =  data;
+    }).error(function(data){
+        alert("error");
+    })
 });
 
 myApp.factory('socket', ['$rootScope', function($rootScope) {
@@ -84,10 +82,8 @@ myApp.factory('socket', ['$rootScope', function($rootScope) {
   };
 }]);
 
-myApp.controller('MySongController', function($scope, socket) {
-    $scope.songLiked = function(index) {
-        socket.emit('like', index);
-    }
+myApp.controller('MySongController', function($scope) {
+    
 });
 
 myApp.controller('searchController', function($scope, deezerService) {
