@@ -13,10 +13,6 @@ app.use('/assets', express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   // Check local storage
-  res.sendFile(__dirname + '/public/login.html');
-});
-
-app.get('/home', function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
