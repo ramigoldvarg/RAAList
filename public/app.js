@@ -1,6 +1,8 @@
 var myApp = angular.module('myApp', [])
 
 myApp.controller('myController', function($scope) {
+    $scope.isSignedIn = true;
+    
     initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
