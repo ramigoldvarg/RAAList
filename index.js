@@ -23,21 +23,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// app.get('/', function (req, res) {
-//   // Check local storage
-//   //res.render('login.html');
-// });
-
-// app.get('/home', function (req, res) {
-//   res.render("index.html");
-// });
-
 app.use('/api', api)
 
-io.on('connection', function (socket) {
-  console.log("connected")
-});
+io.on("connection", onSocketConnection);
+
+function onSocketConnection(socket) {
+    console.log("connected")
+    socket.on('like', onClientJoined);
+};
+
+function onClientJoined(data) {
+    console.log('liked');
+};
 
 http.listen(port, function () {
   console.log('listening on *:' + port);
