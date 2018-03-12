@@ -13,90 +13,68 @@
     <script type="text/javascript" src="/assets/resource/mdb/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/assets/resource/mdb/js/mdb.min.js"></script>
     <script type="text/javascript" src="/assets/resource/mdb/js/popper.min.js"></script>
-    <script type="text/javascript" src="/assets/firebase.js"></script>
-    <script type="text/javascript" src="/assets/app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.css" />
 
+    <script type="text/javascript" src="/assets/firebase.js"></script>
+    <script type="text/javascript" src="/assets/app.js"></script>
     <script type="text/javascript" src="/assets/deezer.js"></script>
     <title>RAAList</title>
   </head>
   <body ng-controller="myController">
-    <div ng-if="isSignedIn">
-      <div class="centered">
-        <ul class="list-group" ng-repeat="currSong in songsList">
-          <my-song-card song-info = "currSong" index="$index"></my-song-card>
-        </ul>
-      </div>
-      <!--/.Card-->
-      <script>
-          (function(d, s, id) { 
-          var js, djs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return; 
-          js = d.createElement(s); js.id = id; 
-          js.src = "https://e-cdns-files.dzcdn.net/js/widget/loader.js"; 
-          djs.parentNode.insertBefore(js, djs);
-        }(document, "script", "deezer-widget-loader"));
-      </script>
+    <script>
+  (function(d, s, id) { 
+var js, djs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return; 
+js = d.createElement(s); js.id = id; 
+js.src = "https://e-cdns-files.dzcdn.net/js/widget/loader.js"; 
+ djs.parentNode.insertBefore(js, djs);
+}(document, "script", "deezer-widget-loader"));</script>
 
 
-    <div class="centered">
-      {{songsList[0]}}
-        <div class="deezer-widget-player" data-src="https://www.deezer.com/plugins/player?format=classic&autoplay=true&playlist=false&width=954&height=90&color=007feb&layout=&size=big&type=tracks&id=3135556&app_id=1" data-scrolling="no" data-frameborder="0" data-allowTransparency="true" data-width="954" data-height="90"></div>        
-      <ul class="list-group" ng-repeat="currSong in songsList">
-        <my-song-card song-info = "currSong" index="$index"></my-song-card>
-      </ul>
-    </div>
-    <!--/.Card-->
+  <div class="centered">
+      <div class="deezer-widget-player" data-src="https://www.deezer.com/plugins/player?format=classic&autoplay=true&playlist=false&width=954&height=90&color=007feb&layout=&size=big&type=tracks&id="+toString({{songsList[0].TrackId}})+"&app_id=1" data-scrolling="no" data-frameborder="0" data-allowTransparency="true" data-width="954" data-height="90"></div>        
+    <ul class="list-group" ng-repeat="currSong in songsList">
+      <my-song-card song-info = "currSong" index="$index"></my-song-card>
+    </ul>
+  </div>
+  <!--/.Card-->
 
-      
+  
       <!-- Button trigger modal -->
 
-      <a class="fab-action-button" data-toggle="modal" data-target="#exampleModal">
-        <i class="fas fa-plus fab-action-button__icon" ></i>
-      </a>
-    
+<a class="fab-action-button" data-toggle="modal" data-target="#exampleModal">
+<i class="fas fa-plus fab-action-button__icon" ></i>
+</a>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add a song</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-            
-<!-- Search form -->
-<div ng-controller="searchController">
-<form class="form-inline md-form mr-auto" ng-submit="searchTracks()">
-  <input ng-model="queryString" class="form-control mr-sm-2" style="width:75%!important" type="text" placeholder="Search" aria-label="Search">
-  <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
-</form>
-</div>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-                      
-                                          
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a song</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-      </div>
+        <div class="modal-body" style="padding-top:0px">
+          
+          <div ng-controller="searchController">
+            <form class="form-inline md-form mr-auto" ng-submit="searchTracks()">
+              <input ng-model="queryString" class="form-control mr-sm-2" style="width:75%!important" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+            <ul class="list-group list-group-flush" ng-repeat="currTrack in tracks">
+                <my-search-result ng-click="addSong()" result-info="currTrack"></my-search-result>
+            </ul>
+          </div>              
+                                  
+        </div>
     </div>
-    <div id="firebaseui-auth-container"></div>
-  </body>
+</div>
+</div>
+</body>
 </html>

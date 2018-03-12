@@ -1,6 +1,8 @@
 var myApp = angular.module('myApp', [])
 
 myApp.controller('myController', function($scope) {
+    $scope.isSignedIn = true;
+    
     initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
@@ -94,7 +96,7 @@ myApp.controller('searchController', function($scope, deezerService) {
         deezerService.findTracks($scope.queryString).then(function(data){
             $scope.results = data.data;
             $scope.list = $scope.results.slice(0,6);
-            return ($scope.handleTracks($scope.list));
+            $scope.tracks = $scope.handleTracks($scope.list);
         });
         
     }
@@ -121,6 +123,16 @@ myApp.directive('mySongCard', function() {
             index: '='
         },
         templateUrl: '/assets/song-card.html'
+    };
+});
+
+myApp.directive('mySearchResult', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            resultInfo: '='
+        },
+        templateUrl: '/assets/search-result.html'
     };
 });
 
