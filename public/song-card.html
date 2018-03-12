@@ -10,3 +10,13 @@
         </div>
     </li>
 </div>
+
+<script>
+  $(function () {
+    var socket = io();
+    $('.like').click(function(){
+      socket.emit('like', "hi");
+      return false;
+    });
+  });
+</script>
