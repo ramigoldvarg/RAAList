@@ -22,14 +22,16 @@ app.get('/home', function (req, res) {
 
 app.use('/api', api)
 
-io.on('connection', function (socket) {
-  socket.on('chat message', function (msg) {
-    io.emit('new message', msg);
-  });
-  socket.on('like', function(index) {
-    console.log('like ' + index)
-  })
-});
+io.on("connection", onSocketConnection);
+
+function onSocketConnection(socket) {
+    console.log("connected")
+    socket.on('like', onClientJoined);
+};
+
+function onClientJoined(data) {
+    console.log('liked');
+};
 
 http.listen(port, function () {
   console.log('listening on *:' + port);
