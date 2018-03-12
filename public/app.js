@@ -1,20 +1,9 @@
 var myApp = angular.module('myApp', [])
 
-myApp.controller('myController', function($scope) {
-  $scope.songsList = [
-      {
-          "songName": "Lil John the king",
-          "likesNumber": 100
-      },
-      {
-          "songName": "Tyrone the king",
-          "likesNumber": 90
-      },
-      {
-          "songName": "Antonyo The King",
-          "likesNumber": 80
-      },
-  ]
+myApp.controller('myController', function($scope,$http) {
+  $scope.songsList = $http("/api/songs").success(function(data){
+      return data;
+  })
 });
 
 myApp.factory('socket', ['$rootScope', function($rootScope) {
