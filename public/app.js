@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', [])
 
-myApp.controller('myController', function($scope) {
+myApp.controller('myController', function($scope,$http,$q) {
   
     initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
@@ -40,20 +40,11 @@ myApp.controller('myController', function($scope) {
 
     initApp();
 
-    $scope.songsList = [
-        {
-            "songName": "Lil John the king",
-            "likesNumber": 100
-        },
-        {
-            "songName": "Tyrone the king",
-            "likesNumber": 90
-        },
-        {
-            "songName": "Antonyo The King",
-            "likesNumber": 80
-        },
-    ]
+     $http.get("/api/songs").success(function(data){
+        $scope.songsList =  data;
+    }).error(function(data){
+        alert("error");
+    })
 });
 
 myApp.factory('socket', ['$rootScope', function($rootScope) {
@@ -82,6 +73,6 @@ myApp.directive('mySongCard', function() {
             songInfo: '=',
             index: '='
         },
-        templateUrl: 'song-card.html'
+        templateUrl: '/assets/song-card.html'
     };
 });

@@ -1,7 +1,7 @@
 <div ng-controller="MySongController">
     <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="{activeSong: index == 0}">
-        <div style="width:85%">{{songInfo.songName}}</div>
-        <span style="font-size:18px; float:left;" class="badge badge-primary badge-pill">likes: {{songInfo.ratings}}</span>
+        <div style="width:85%">{{songInfo.Name}}</div>
+        <span style="font-size:18px; float:left;" class="badge badge-primary badge-pill">likes: {{songInfo.Rating}}</span>
         <div ng-if="index==0" class="like" style="cursor:auto;">
             <i class="fas fa-play"></i>
         </div>
