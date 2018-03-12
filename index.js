@@ -19,8 +19,8 @@ app.get('/', function (req, res) {
 app.use('/api', api)
 
 io.on('connection', function (socket) {
-  socket.on('like', function (data) {
-    console.log("hi");
+  socket.on('like', function(index) {
+    console.log("index: " + index);
   });
 });
 
