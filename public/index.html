@@ -15,6 +15,7 @@
     <script type="text/javascript" src="resource/mdb/js/mdb.min.js"></script>
     <script type="text/javascript" src="resource/mdb/js/popper.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="deezer.js"></script>
     <title>RAAList</title>
   </head>
   <body ng-controller="myController">
@@ -46,10 +47,12 @@
           <div class="modal-body">
             
 <!-- Search form -->
-<form class="form-inline md-form mr-auto">
-  <input class="form-control mr-sm-2" style="width:75%!important" type="text" placeholder="Search" aria-label="Search">
+<div ng-controller="searchController">
+<form class="form-inline md-form mr-auto" ng-submit="searchTracks()">
+  <input ng-model="queryString" class="form-control mr-sm-2" style="width:75%!important" type="text" placeholder="Search" aria-label="Search">
   <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
 </form>
+</div>
 
 <ul class="list-group list-group-flush">
   <li class="list-group-item">Cras justo odio</li>

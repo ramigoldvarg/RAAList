@@ -37,6 +37,31 @@ myApp.controller('MySongController', function($scope, socket) {
     }
 });
 
+myApp.controller('searchController', function($scope, deezerService) {
+    $scope.queryString="";
+    $scope.searchTracks = function(){
+        deezerService.findTracks($scope.queryString).then(function(data){
+            $scope.results = data.data;
+            $scope.list = $scope.results.slice(0,6);
+            return ($scope.handleTracks($scope.list));
+        });
+        
+    }
+
+    $scope.handleTracks = function(arrayFromApi){
+        var tracksForView = [];
+        arrayFromApi.forEach(function(item){
+            tracksForView.push({
+                "track_id": item.id,
+                "song": item.title,
+                "artist": item.artist.name,
+                "cover":item.album.cover
+            });
+        });
+        return tracksForView;
+    }
+});
+
 myApp.directive('mySongCard', function() {
     return {
         restrict: 'E',
@@ -59,3 +84,4 @@ myApp.directive('mySongCard', function() {
         templateUrl: 'song-card.html'
     };
 });
+
