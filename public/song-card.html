@@ -1,11 +1,12 @@
-<li class="list-group-item d-flex justify-content-between align-items-center" ng-class="{activeSong: index == 0}">
-    <div style="width:85%">{{songInfo.songName}}</div>
-    <span style="font-size:18px; float:left;" class="badge badge-primary badge-pill">likes: {{songInfo.ratings}}</span>
-    <div ng-if="index==0" class="like" style="cursor:auto;">
-        <i class="fas fa-play"></i>
-    </div>
-    <div ng-if="index!=0" ng-click="songLiked(index)" class="like">
-        <i class="fas fa-thumbs-up"></i>
-    </div>
-    
-</li>
+<div ng-controller="MySongController">
+    <li class="list-group-item d-flex justify-content-between align-items-center" ng-class="{activeSong: index == 0}">
+        <div style="width:85%">{{songInfo.songName}}</div>
+        <span style="font-size:18px; float:left;" class="badge badge-primary badge-pill">likes: {{songInfo.ratings}}</span>
+        <div ng-if="index==0" class="like" style="cursor:auto;">
+            <i class="fas fa-play"></i>
+        </div>
+        <div ng-if="index!=0" ng-click="songLiked(index)" class="like">
+            <i class="fas fa-thumbs-up"></i>
+        </div>
+    </li>
+</div>
