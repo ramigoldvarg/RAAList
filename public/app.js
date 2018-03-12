@@ -82,6 +82,6 @@ myApp.directive('mySongCard', function() {
             songInfo: '=',
             index: '='
         },
-        templateUrl: 'song-card.html'
+        templateUrl: '/assets/song-card.html'
     };
 });
